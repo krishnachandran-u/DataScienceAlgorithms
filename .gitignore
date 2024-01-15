@@ -1,4 +1,11 @@
 *.csv
 *.data
 
-executable/
+# Ignore executable
+executable
+
+# Ignore object files
+*.o
+
+bin/
+build/
