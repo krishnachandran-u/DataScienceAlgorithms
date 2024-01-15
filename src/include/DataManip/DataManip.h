@@ -11,4 +11,8 @@ class DataFrame {
         std::vector<std::string> split(const std::string& s, char delimiter);
     public: 
         DataFrame(const std::string& filename);
-}
+        void head(int n);
+};
+
+#endif // DATAMANIP_H
+```
