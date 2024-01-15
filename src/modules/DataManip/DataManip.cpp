@@ -1,4 +1,4 @@
-#include "./../include/DataManip.h"
+#include "./../../include/DataManip/DataManip.h"
 #include <iostream>
 #include <vector>
 #include <utility>
@@ -32,7 +32,7 @@ DataFrame::DataFrame(const std::string& filename) {
 
 void DataFrame::head(int n) {
     for(int i = 0; i < std::min(n, (int)data.size()); i++) {
-        for(int j = 0; j < data[i].size(); j++) {
+        for(int j = 0; j < (int)data[i].size(); j++) {
             std::cout << data[i][j] << " ";
         }
         std::cout << "\n";
@@ -42,7 +42,7 @@ void DataFrame::head(int n) {
 void DataFrame::tail(int n) {
     int cnt = 0;
     for(int i = data.size() - 1; i >= 0 && cnt < n; i--, cnt++) {
-        for(int j = 0; j < data[i].size(); j++) {
+        for(int j = 0; j < (int)data[i].size(); j++) {
             std::cout << data[i][j] << " ";
         }
         std::cout << "\n";

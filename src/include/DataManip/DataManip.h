@@ -12,7 +12,7 @@ class DataFrame {
     public: 
         DataFrame(const std::string& filename);
         void head(int n);
+        void tail(int n);
 };
 
 #endif // DATAMANIP_H
-```
