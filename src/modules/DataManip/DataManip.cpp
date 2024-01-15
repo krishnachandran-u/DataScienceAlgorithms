@@ -15,6 +15,8 @@ std::vector<std::string> DataFrame::split(const std::string& s, char delimiter) 
     return row;  
 }
 
+DataFrame::DataFrame() {}
+
 DataFrame::DataFrame(const std::string& filename) { 
     std::ifstream file(filename);
     if(!file.is_open()) {
@@ -37,6 +39,7 @@ void DataFrame::head(int n) {
         }
         std::cout << "\n";
     }
+    return;
 }
 
 void DataFrame::tail(int n) {
@@ -47,4 +50,18 @@ void DataFrame::tail(int n) {
         }
         std::cout << "\n";
     }
+    return;
+}
+
+std::pair<DataFrame, DataFrame> DataFrame::trainTestSplit(float testFraction) {
+    int testSize = (int)(data.size() * testFraction);
+    int trainSize = data.size() - testSize;
+    DataFrame train, test;
+    for(int i = 0; i < trainSize; i++) {
+        train.data.push_back(data[i]);
+    }
+    for(int i = trainSize; i < (int)data.size(); i++) {
+        test.data.push_back(data[i]);
+    }
+    return std::make_pair(train, test);
 }
