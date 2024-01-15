@@ -3,7 +3,7 @@ CFLAGS = -Wall -std=c++11
 SRC_DIRS = $(shell find . -type d)
 SRC_FILES = $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.cpp))
 OBJ_FILES = $(patsubst %.cpp,%.o,$(SRC_FILES))
-EXECUTABLE = my_executable
+EXECUTABLE = executable
 
 all: $(EXECUTABLE)
 
