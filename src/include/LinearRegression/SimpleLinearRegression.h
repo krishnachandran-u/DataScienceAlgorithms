@@ -10,6 +10,7 @@ class SimpleLinearRegression {
     public:
         SimpleLinearRegression(DataFrame xTrain, DataFrame yTrain);
         long double printCoefficients();
+        DataFrame predict(DataFrame xTest);
 }
 
 #endif

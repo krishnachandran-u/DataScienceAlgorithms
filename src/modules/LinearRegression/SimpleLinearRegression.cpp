@@ -1,4 +1,5 @@
 #include <./../../include/SimpleLinearRegression/SimpleLinearRegression.h>
+#include <./../../include/DataManip/DataManip.h>
 #include <iostream>
 #include <string>
 
@@ -30,4 +31,11 @@ SimpleLinearRegression::SimpleLinearRegression(DataFrame xTrain, DataFrame yTrai
 long double SimpleLinearRegression::printCoefficients() {
     std::cout << "y = " << coefficients.first << " + " << coefficients.second << "x" << std::endl;
     return 0;
+}
+
+DataFrame SimpleLinearRegression::predict(DataFrame xTest) {
+    DataFrame predictedData;
+    for(int i = 0; i < (int)xTest.size(); i++) {
+        long double y = coefficients.first + (coefficients.second * std::stold(xTest[i]));
+    }
 }

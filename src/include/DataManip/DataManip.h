@@ -12,9 +12,11 @@ class DataFrame {
     public: 
         DataFrame();
         DataFrame(const std::string& filename);
+        void pushBack(const std::vector<std::string>& row);
         void head(int n);
         void tail(int n);
-        std::pair<DataFrame, DataFrame> trainTestSplit(float testFraction);
+        std::pair<DataFrame, DataFrame> trainTestSplit(float trainFraction);
+        DataFrame stripPredictor(Dataframe df);
 };
 
 #endif // DATAMANIP_H

@@ -53,15 +53,34 @@ void DataFrame::tail(int n) {
     return;
 }
 
-std::pair<DataFrame, DataFrame> DataFrame::trainTestSplit(float testFraction) {
-    int testSize = (int)(data.size() * testFraction);
-    int trainSize = data.size() - testSize;
-    DataFrame train, test;
+std::pair<DataFrame, DataFrame> DataFrame::trainTestSplit(float trainFraction) {
+    int n = data.size();
+    int trainSize = (int)(trainFraction * n);
+    int testSize = n - trainSize;
+    DataFrame train;
+    DataFrame test;
     for(int i = 0; i < trainSize; i++) {
-        train.data.push_back(data[i]);
+        train.pushBack(data[i]);
     }
-    for(int i = trainSize; i < (int)data.size(); i++) {
-        test.data.push_back(data[i]);
+    for(int i = trainSize; i < n; i++) {
+        test.pushBack(data[i]);
     }
     return std::make_pair(train, test);
+}
+
+void DataFrame::pushBack(const std::vector<std::string>& row) {
+    data.push_back(row);
+    return;  
+}
+
+DataFrame DataFrame::stripPredictor(DataFrame df) {
+    DataFrame strippedDf;
+    for(int i = 0; i < (int)df.size(); i++) {
+        std::vector<std::string> row;
+        for(int j = 0; j < (int)df[i].size() - 1; j++) {
+            row.push_back(df[i][j]);
+        }
+        strippedDf.pushBack(row);
+    }
+    return strippedDf;
 }
