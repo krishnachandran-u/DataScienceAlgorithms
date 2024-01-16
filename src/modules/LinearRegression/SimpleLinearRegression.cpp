@@ -36,6 +36,13 @@ long double SimpleLinearRegression::printCoefficients() {
 DataFrame SimpleLinearRegression::predict(DataFrame xTest) {
     DataFrame predictedData;
     for(int i = 0; i < (int)xTest.size(); i++) {
-        long double y = coefficients.first + (coefficients.second * std::stold(xTest[i]));
+        std::vector<std::string> row;
+        for(int j = 0; j < 1; j++) {
+            long double y = coefficients.first + coefficients.second * std::stold(xTest[j]);
+            row.push_back(std::to_string(x));
+            row.push_back(std::to_string(y));
+        }
+        predictedData.pushBack(row);
     }
 }
+

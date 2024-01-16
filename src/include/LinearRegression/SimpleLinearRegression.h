@@ -11,6 +11,7 @@ class SimpleLinearRegression {
         SimpleLinearRegression(DataFrame xTrain, DataFrame yTrain);
         long double printCoefficients();
         DataFrame predict(DataFrame xTest);
+        
 }
 
 #endif
