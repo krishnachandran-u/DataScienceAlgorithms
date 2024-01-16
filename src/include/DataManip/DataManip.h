@@ -7,9 +7,10 @@
 
 class DataFrame {
     private:
-        std::vector<std::vector<std::string>> data;
         std::vector<std::string> split(const std::string& s, char delimiter);
     public: 
+        std::vector<std::vector<std::string>> data;
+
         DataFrame();
         DataFrame(const std::string& filename);
         void pushBack(const std::vector<std::string>& row);
@@ -17,6 +18,7 @@ class DataFrame {
         void tail(int n);
         std::pair<DataFrame, DataFrame> trainTestSplit(float trainFraction);
         DataFrame stripPredictor(Dataframe df);
+        DataFrame stripTarget(DataFrame df);
 };
 
 #endif // DATAMANIP_H

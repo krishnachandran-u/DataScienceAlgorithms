@@ -75,11 +75,21 @@ void DataFrame::pushBack(const std::vector<std::string>& row) {
 
 DataFrame DataFrame::stripPredictor(DataFrame df) {
     DataFrame strippedDf;
-    for(int i = 0; i < (int)df.size(); i++) {
+    for(int i = 0; i < (int)data.size(); i++) {
         std::vector<std::string> row;
-        for(int j = 0; j < (int)df[i].size() - 1; j++) {
-            row.push_back(df[i][j]);
+        for(int j = 0; j < (int)data[i].size() - 1; j++) {
+            row.push_back(data[i][j]);
         }
+        strippedDf.pushBack(row);
+    }
+    return strippedDf;
+}
+
+DataFrame DataFrame::stripTarget(DataFrame df) {
+    DataFrame strippedDf;
+    for(int i = 0; i < (int)data.size(); i++) {
+        std::vector<std::string> row;
+        row.push_back(data[i][(int)data[i].size() - 1]);
         strippedDf.pushBack(row);
     }
     return strippedDf;

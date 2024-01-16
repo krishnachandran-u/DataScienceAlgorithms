@@ -1,5 +1,5 @@
-#ifndef LINEARREGRESSION_H
-#define LINEARREGRESSION_H
+#ifndef SIMPLELINEARREGRESSION_H
+#define SIMPLELINEARREGRESSION_H
 
 #include "./../DataManip/DataManip.h"
 #include <iostream>
