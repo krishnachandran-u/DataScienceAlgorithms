@@ -4,6 +4,7 @@
 #include <utility>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 std::vector<std::string> DataFrame::split(const std::string& s, char delimiter) {
     std::vector<std::string> row;
@@ -56,7 +57,6 @@ void DataFrame::tail(int n) {
 std::pair<DataFrame, DataFrame> DataFrame::trainTestSplit(float trainFraction) {
     int n = data.size();
     int trainSize = (int)(trainFraction * n);
-    int testSize = n - trainSize;
     DataFrame train;
     DataFrame test;
     for(int i = 0; i < trainSize; i++) {
@@ -73,7 +73,7 @@ void DataFrame::pushBack(const std::vector<std::string>& row) {
     return;  
 }
 
-DataFrame DataFrame::stripPredictor(DataFrame df) {
+DataFrame DataFrame::stripPredictor() {
     DataFrame strippedDf;
     for(int i = 0; i < (int)data.size(); i++) {
         std::vector<std::string> row;
@@ -85,7 +85,7 @@ DataFrame DataFrame::stripPredictor(DataFrame df) {
     return strippedDf;
 }
 
-DataFrame DataFrame::stripTarget(DataFrame df) {
+DataFrame DataFrame::stripTarget() {
     DataFrame strippedDf;
     for(int i = 0; i < (int)data.size(); i++) {
         std::vector<std::string> row;
@@ -93,4 +93,8 @@ DataFrame DataFrame::stripTarget(DataFrame df) {
         strippedDf.pushBack(row);
     }
     return strippedDf;
+}
+
+void DataFrame::sort() {
+    std::sort(data.begin(), data.end());
 }

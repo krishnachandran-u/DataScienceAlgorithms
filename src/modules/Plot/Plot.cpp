@@ -4,7 +4,7 @@
 #include <fstream>
 #include <cstdio>
 
-void Plot::simplPlot(DataFrame df) {
+void Plot::simplePlot(DataFrame df) {
     std::vector<long double> predictor, target;
 
     for(int i = 0; i < (int)df.data.size(); i++) {
@@ -15,7 +15,7 @@ void Plot::simplPlot(DataFrame df) {
     FILE *gnuplotPipe = popen("gnuplot -persist", "w");
 
     if(gnuplotPipe) {
-        fprintf(gnuplotPipe, "plot '-' with lines\n");
+        fprintf(gnuplotPipe, "plot '-' with points title 'Scatterplot'\n");
         for(int i = 0; i < (int)predictor.size(); i++) {
             fprintf(gnuplotPipe, "%Lf %Lf\n", predictor[i], target[i]);
         }
@@ -26,7 +26,7 @@ void Plot::simplPlot(DataFrame df) {
         std::cerr << "Error opening pipe to GNUPlot" << std::endl;
     }
 
-    return 0;
+    return;
 }
 
 

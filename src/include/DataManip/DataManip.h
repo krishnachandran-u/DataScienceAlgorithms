@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <algorithm>
 
 class DataFrame {
     private:
@@ -17,8 +18,9 @@ class DataFrame {
         void head(int n);
         void tail(int n);
         std::pair<DataFrame, DataFrame> trainTestSplit(float trainFraction);
-        DataFrame stripPredictor(Dataframe df);
-        DataFrame stripTarget(DataFrame df);
+        DataFrame stripPredictor();
+        DataFrame stripTarget();
+        void sort();
 };
 
 #endif // DATAMANIP_H
